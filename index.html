@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/css/default.css">
+    <meta name="keywords" content="random,随机字符串,随机密码,复杂密码,强密码,大小写字母,特殊符号,在线生成,在线工具" />
+    <meta name="description" content="生成随机字符串，在一定程度上可以作为密码使用，使用内置随机数发生器产生随机序列，避免人的主观意识产生的有序排列字符串，在用作密码或信息识别时强度更高，在允许时数字、大小写字母、标点符号都应该用上生成组合密码以增加安全性等。" />
+    <title>在线生成随机字符串</title>
+    <style>
+        button {
+          color: #141d2b;
+          background: #778899;
+          width: 100px;
+          height: 40px;
+          border: 0px;
+          border-radius: 4px;
+          letter-spacing: 2px;
+          cursor: pointer;
+          font-size: 14px;
+        }
+        
+        button:hover {
+          background: #708090;
+        }
+    </style>
+</head>
+
+<body onload="generate()">
+    <nav class="navbar">
+        <div style="display: -webkit-flex;display: flex;flex: 20%;align-items: center;font-size: 18px;padding-left: 15px;">
+        </div>
+        <div style="display: -webkit-flex;display: flex;flex: 80%;align-items: center;justify-content: flex-end;">
+            <ul class="nav-menu">
+                <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12">
+                </path>
+                </svg></a></li>
+            </ul>
+        </div>
+    </nav>
+    <main style="display: -webkit-flex;display: flex;justify-content: space-around; margin: 0px;padding: 0px;">
+        <div style="flex: 0 0 15%;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4169504979687359" data-ad-slot="9021161584" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+        <div style="flex: 0 0 68%;">
+            <div class="row">
+                <h2>在线生成随机字符串</h2>
+                <p>随机字符串/密码生成器，输入位数，选择生成选项，也可以自定义输入文本，点击生成即可产生随机字符串/密码</p>
+            </div>
+            <div style="margin-top: 30px;">
+                <label for="length">长度：</label>
+                <input id="length" type="number" value="16" min="1" max="200" step="1" style="color: Snow; background-color: DimGrey">
+                <label for="quantity" style="margin-left: 20px;">数量：</label>
+                <input id="quantity" type="number" value="5" min="1" max="200" step="1" style="color: Snow; background-color: DimGrey">
+                <input type="checkbox" id="uppercase" style="margin-left: 20px;" checked>
+                <label for="uppercase">大写字母</label>
+                <input type="checkbox" id="lowercase" style="margin-left: 20px;">
+                <label for="lowercase">小写字母</label>
+                <input type="checkbox" id="number" style="margin-left: 20px;" checked>
+                <label for="number">数字</label>
+                <input type="checkbox" id="symbol" style="margin-left: 20px;">
+                <label for="symbol">特殊字符</label>
+            </div>
+            <div style="margin-top: 30px;">
+                <button type="button" class="btn-light" style="margin-right: 20px;width: 130px;" onclick="generate()">生成随机字符串</button>
+                <button type="button" class="btn-light" style="margin-right: 20px;" onclick="copy()">复制结果</button>
+            </div>
+            <div id="result" class="row" style="margin-top: 20px;color: Snow; background-color: grey21;min-height: 60px;text-align: left;padding: 20px;font-family: monospace;">
+            </div>
+            <div style="margin-top: 30px;">
+                <h3>小知识</h3>
+                <p>
+                    生成随机字符串，在一定程度上可以作为密码使用，使用内置随机数发生器产生随机序列，避免人的主观意识产生的有序排列字符串，在用作密码或信息识别时强度更高，在允许时数字、大小写字母、标点符号都应该用上生成组合密码以增加安全性等。
+                </p>
+            </div>
+        </div>
+        <div style="flex: 0 0 15%;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4169504979687359" data-ad-slot="9021161584" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    </main>
+    <div style="text-align: center;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4169504979687359" crossorigin="anonymous"></script>
+
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4169504979687359" data-ad-slot="6722548729" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            });
+        </script>
+    </div>
+    <footer>
+        <div class="copyright">
+            <span>All rights reserved.</span>
+        </div>
+    </footer>
+    <script>
+        function generate() {
+          var upperInput = document.getElementById("uppercase");
+          var lowerInput = document.getElementById("lowercase");
+          var numberInput = document.getElementById("number");
+          var symbolInput = document.getElementById("symbol");
+          var lengthInput = document.getElementById("length");
+          var quantityInput = document.getElementById("quantity");
+          var resultDiv = document.getElementById("result");
+          var length = parseInt(lengthInput.value);
+          var quantity = parseInt(quantityInput.value);
+          var characters = "";
+          if (upperInput.checked) {
+            characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+          }
+          if (lowerInput.checked) {
+            characters += '!@#%^&*()_~`}{[]:;><,./-=';
+          }
+          if (numberInput.checked) {
+            characters += "012356789";
+          }
+          if (symbolInput.checked) {
+            characters += "!@#%^&-_=()<>?,;:";
+          }
+          resultDiv.innerHTML = "";
+          for (let i = 0; i < quantity; i++) {
+            let str = "";
+            for (let j = 0; j < length; j++) {
+              str += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            let p = document.createElement('p');
+            p.innerText = str;
+            resultDiv.appendChild(p);
+            console.log(str);
+          }
+        }
+        generate();
+        function copy() {
+          var element = document.getElementById("result");
+          window.getSelection().selectAllChildren(element);
+          document.execCommand('copy');
+        }
+    </script>
+</body>
+
+</html>
